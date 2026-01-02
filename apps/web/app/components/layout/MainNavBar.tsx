@@ -695,7 +695,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
         onClick={onClose}
       />
       
-      <div className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white z-[9999] overflow-y-auto sm:hidden animate-slideIn shadow-2xl">
+      <div className="fixed inset-0 bg-white z-[9999] overflow-y-auto sm:hidden shadow-2xl">
         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2" onClick={onClose}>
             <img src="/logo.svg" alt="Logo" className="w-6 h-6" />
@@ -1006,26 +1006,33 @@ export default function MainNavbar() {
               </Link>
             </div>
 
-            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
-              <Link
-                href="/login"
-                className="px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
-              >
-                Log in
-              </Link>
-              <Link
-                href="/signup"
-                className="px-3.5 py-2.5 -my-1 text-xs font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
-                style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
-              >
-                Sign Up
-              </Link>
-              <button
-                onClick={toggleMobileMenu}
-                className="ml-1 px-2 py-1.5 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
-              >
-                <HamburgerIcon />
-              </button>
+            <div className="flex items-center gap-2">
+              {/* Hamburger Menu Pill */}
+              <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+                <button
+                  onClick={toggleMobileMenu}
+                  className="px-2 py-1.5 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                >
+                  <HamburgerIcon />
+                </button>
+              </div>
+
+              {/* Login/Signup Pill */}
+              <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+                <Link
+                  href="/login"
+                  className="px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/signup"
+                  className="px-3.5 py-2.5 -my-1 text-xs font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
+                  style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
+                >
+                  Sign Up
+                </Link>
+              </div>
             </div>
           </div>
         </nav>
@@ -1043,17 +1050,6 @@ export default function MainNavbar() {
           }
           .animate-fadeIn {
             animation: fadeIn 0.2s ease-out;
-          }
-          @keyframes slideIn {
-            from {
-              transform: translateX(100%);
-            }
-            to {
-              transform: translateX(0);
-            }
-          }
-          .animate-slideIn {
-            animation: slideIn 0.3s ease-out;
           }
         `}</style>
       </header>
