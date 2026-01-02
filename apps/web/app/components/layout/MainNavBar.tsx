@@ -999,13 +999,6 @@ export default function MainNavbar() {
 
           {/* Mobile Layout */}
           <div className="flex sm:hidden items-center justify-between gap-2">
-            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
-              <Link href="/" className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
-                <img src="/logo.svg" alt="Logo" className="w-5 h-5" />
-                <span className="text-gray-900">Logo</span>
-              </Link>
-            </div>
-
             <div className="flex items-center gap-2">
               {/* Hamburger Menu Pill */}
               <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
@@ -1017,22 +1010,30 @@ export default function MainNavbar() {
                 </button>
               </div>
 
-              {/* Login/Signup Pill */}
+              {/* Logo Pill */}
               <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
-                <Link
-                  href="/login"
-                  className="px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
-                >
-                  Log in
-                </Link>
-                <Link
-                  href="/signup"
-                  className="px-3.5 py-2.5 -my-1 text-xs font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
-                  style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
-                >
-                  Sign Up
+                <Link href="/" className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                  <img src="/logo.svg" alt="Logo" className="w-5 h-5" />
+                  <span className="text-gray-900">Logo</span>
                 </Link>
               </div>
+            </div>
+
+            {/* Login/Signup Pill */}
+            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link
+                href="/login"
+                className="px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="px-3.5 py-2.5 -my-1 text-xs font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
+                style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
+              >
+                Sign Up
+              </Link>
             </div>
           </div>
         </nav>
