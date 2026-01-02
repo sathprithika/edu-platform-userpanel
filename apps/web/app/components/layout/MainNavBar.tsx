@@ -41,6 +41,24 @@ const ChevronRight = () => (
   </svg>
 );
 
+const HamburgerIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 5l10 10M15 5l-10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const BackArrow = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 5L7 10L12 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 // Menu data structure with content for each sidebar option
 const menuData = {
   topic: {
@@ -455,7 +473,6 @@ const MegaMenu = ({ type, isOpen }) => {
   const data = menuData[type];
   const [selectedTab, setSelectedTab] = useState(null);
   
-  // Reset selected tab when menu type changes or when menu opens
   useEffect(() => {
     if (isOpen && data?.sidebar?.[0]?.id) {
       setSelectedTab(data.sidebar[0].id);
@@ -464,19 +481,17 @@ const MegaMenu = ({ type, isOpen }) => {
   
   if (!data || !isOpen) return null;
 
-  // Use selectedTab, defaulting to first item if not set
   const activeTab = selectedTab || data.sidebar[0]?.id;
   const activeContent = data.content?.[activeTab];
 
   return (
-    <div className="fixed left-0 right-0 top-[70px] z-40">
+    <div className="fixed left-0 right-0 top-[80px] z-40">
       <div className="max-w-[1250px] mx-auto">
         <div 
           className="bg-white rounded-xl border shadow-2xl overflow-hidden animate-fadeIn jakarta-font" 
           style={{ borderColor: 'rgba(140, 140, 170, 0.3)' }}
         >
           <div className="flex">
-            {/* Left Sidebar with arrows on all items */}
             {data.sidebar && (
               <div className="w-36 bg-white border-r border-gray-200 py-3">
                 <div className="px-2 space-y-0.5">
@@ -486,8 +501,8 @@ const MegaMenu = ({ type, isOpen }) => {
                       onClick={() => setSelectedTab(item.id)}
                       className={`w-full flex items-center gap-2 px-2.5 py-1.5 text-xs font-bold rounded-md transition-all duration-200 group ${
                         activeTab === item.id
-                          ? 'bg-indigo-50 text-indigo-600'
-                          : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
+                          ? 'text-gray-700 hover:bg-gray-50 hover:bg-gray-50'
+                          : 'text-gray-700 hover:bg-gray-50 hover:bg-gray-50'
                       }`}
                     >
                       <span className="text-sm">{item.icon}</span>
@@ -499,21 +514,19 @@ const MegaMenu = ({ type, isOpen }) => {
               </div>
             )}
 
-            {/* Main Content - Card-based for pathways, Grid-based for others */}
             <div className="flex-1 p-5">
-              {/* Card Layout for Pathways */}
               {activeContent?.cards ? (
                 <div className="grid grid-cols-3 gap-4">
                   {activeContent.cards.map((card, idx) => (
                     <Link
                       key={idx}
                       href={card.href}
-                      className="group p-4 border border-gray-200 rounded-lg hover:border-indigo-300 hover:shadow-md transition-all duration-200 bg-white"
+                      className="group p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md transition-all duration-200 bg-white"
                     >
                       <div className="flex items-start gap-3">
                         <span className="text-2xl flex-shrink-0">{card.icon}</span>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-gray-900 mb-1.5 group-hover:text-indigo-600 transition-colors">
+                          <h3 className="text-sm font-bold text-gray-900 mb-1.5 group-hover:bg-gray-50 transition-colors">
                             {card.name}
                           </h3>
                           <p className="text-xs text-gray-600 leading-relaxed">
@@ -525,7 +538,6 @@ const MegaMenu = ({ type, isOpen }) => {
                   ))}
                 </div>
               ) : (
-                /* Grid Layout for Topic and Resources */
                 <div className="grid grid-cols-3 gap-x-8 gap-y-5">
                   {activeContent?.sections?.map((section, idx) => (
                     <div key={idx}>
@@ -544,7 +556,7 @@ const MegaMenu = ({ type, isOpen }) => {
                           <li key={itemIdx}>
                             <Link
                               href={item.href}
-                              className="flex items-center gap-2 px-2 py-1.5 text-xs text-gray-600 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors group"
+                              className="flex items-center gap-2 px-2 py-1.5 text-xs text-gray-600 hover:bg-gray-50 hover:bg-gray-50 rounded-md transition-colors group"
                             >
                               <span className="text-sm opacity-60 group-hover:opacity-100">{item.icon}</span>
                               <span>{item.name}</span>
@@ -557,7 +569,6 @@ const MegaMenu = ({ type, isOpen }) => {
                 </div>
               )}
 
-              {/* Bottom Links */}
               {activeContent?.bottomLinks && (
                 <div className="mt-5 pt-4 border-t border-gray-200">
                   <div className="flex items-center gap-4">
@@ -565,7 +576,7 @@ const MegaMenu = ({ type, isOpen }) => {
                       <Link
                         key={idx}
                         href={link.href}
-                        className="flex items-center gap-1.5 text-xs text-gray-600 hover:text-indigo-600 transition-colors"
+                        className="flex items-center gap-1.5 text-xs text-gray-600 hover:bg-gray-50 transition-colors"
                       >
                         <span className="text-sm">{link.icon}</span>
                         <span>{link.name}</span>
@@ -576,10 +587,8 @@ const MegaMenu = ({ type, isOpen }) => {
               )}
             </div>
 
-            {/* Right Sidebar - shows content based on selected tab */}
             {activeContent?.featured && (
               <div className="w-56 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 border-l border-purple-100 p-4">
-                {/* Testimonial-style for Resources */}
                 {activeContent.featured.testimonial ? (
                   <div>
                     <p className="text-[10px] font-semibold text-gray-600 mb-3">
@@ -609,7 +618,6 @@ const MegaMenu = ({ type, isOpen }) => {
                     </Link>
                   </div>
                 ) : (
-                  /* Regular featured section for Topic */
                   <div>
                     <div className="mb-3">
                       <p className="text-[10px] font-semibold text-gray-600 mb-1">
@@ -650,8 +658,178 @@ const MegaMenu = ({ type, isOpen }) => {
   );
 };
 
+const MobileMenu = ({ isOpen, onClose }) => {
+  const [selectedMenu, setSelectedMenu] = useState(null);
+
+  if (!isOpen) return null;
+
+  const handleMenuClick = (menuKey) => {
+    setSelectedMenu(menuKey);
+  };
+
+  const handleBack = () => {
+    setSelectedMenu(null);
+  };
+
+  const getMenuContent = () => {
+    if (!selectedMenu) return null;
+    
+    switch(selectedMenu) {
+      case 'product':
+        return menuData.topic;
+      case 'solutions':
+        return menuData.pathways;
+      case 'resources':
+        return menuData.resources;
+      default:
+        return null;
+    }
+  };
+
+  const activeMenuData = getMenuContent();
+
+  return (
+    <>
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-[9998] sm:hidden"
+        onClick={onClose}
+      />
+      
+      <div className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white z-[9999] overflow-y-auto sm:hidden animate-slideIn shadow-2xl">
+        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2" onClick={onClose}>
+            <img src="/logo.svg" alt="Logo" className="w-6 h-6" />
+            <span className="text-lg font-bold text-gray-900">Logo</span>
+          </Link>
+          <button
+            onClick={onClose}
+            className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <CloseIcon />
+          </button>
+        </div>
+
+        {!selectedMenu ? (
+          <div className="py-4">
+            <button
+              onClick={() => handleMenuClick('product')}
+              className="w-full flex items-center justify-between px-6 py-4 text-left text-gray-900 hover:bg-gray-50 border-b border-gray-100"
+            >
+              <span className="text-base font-medium">Topic</span>
+              <ChevronRight />
+            </button>
+            <button
+              onClick={() => handleMenuClick('solutions')}
+              className="w-full flex items-center justify-between px-6 py-4 text-left text-gray-900 hover:bg-gray-50 border-b border-gray-100"
+            >
+              <span className="text-base font-medium">Pathways</span>
+              <ChevronRight />
+            </button>
+            <button
+              onClick={() => handleMenuClick('resources')}
+              className="w-full flex items-center justify-between px-6 py-4 text-left text-gray-900 hover:bg-gray-50 border-b border-gray-100"
+            >
+              <span className="text-base font-medium">Resources</span>
+              <ChevronRight />
+            </button>
+            <Link
+              href="/pricing"
+              className="block w-full px-6 py-4 text-left text-gray-900 hover:bg-gray-50 border-b border-gray-100"
+              onClick={onClose}
+            >
+              <span className="text-base font-medium">Pricing</span>
+            </Link>
+            <Link
+              href="/enterprise"
+              className="block w-full px-6 py-4 text-left text-gray-900 hover:bg-gray-50 border-b border-gray-100"
+              onClick={onClose}
+            >
+              <span className="text-base font-medium">Enterprise</span>
+            </Link>
+          </div>
+        ) : (
+          <div className="py-4">
+            <button
+              onClick={handleBack}
+              className="flex items-center gap-2 px-6 py-3 text-gray-600 hover:text-gray-900 border-b border-gray-100 w-full"
+            >
+              <BackArrow />
+              <span className="text-sm font-medium">Back</span>
+            </button>
+
+            {activeMenuData?.sidebar && (
+              <div className="mt-2">
+                {activeMenuData.sidebar.map((section, idx) => {
+                  const sectionContent = activeMenuData.content[section.id];
+                  
+                  return (
+                    <div key={idx} className="border-b border-gray-100">
+                      <div className="px-6 py-3 bg-gray-50">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{section.icon}</span>
+                          <h3 className="text-sm font-bold text-gray-900">{section.name}</h3>
+                        </div>
+                      </div>
+                      
+                      <div className="px-6 py-2">
+                        {sectionContent?.sections?.map((subsection, subIdx) => (
+                          <div key={subIdx} className="py-3">
+                            <h4 className="text-xs font-bold text-gray-900 mb-2">
+                              {subsection.title}
+                            </h4>
+                            <ul className="space-y-1">
+                              {subsection.items.map((item, itemIdx) => (
+                                <li key={itemIdx}>
+                                  <Link
+                                    href={item.href}
+                                    className="flex items-center gap-2 py-2 text-gray-700 hover:text-indigo-600"
+                                    onClick={onClose}
+                                  >
+                                    <span className="text-base">{item.icon}</span>
+                                    <span className="text-sm">{item.name}</span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+
+                        {sectionContent?.cards?.map((card, cardIdx) => (
+                          <Link
+                            key={cardIdx}
+                            href={card.href}
+                            className="block py-3 border-b border-gray-100"
+                            onClick={onClose}
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="text-2xl">{card.icon}</span>
+                              <div>
+                                <h4 className="text-sm font-bold text-gray-900 mb-1">
+                                  {card.name}
+                                </h4>
+                                <p className="text-xs text-gray-600">
+                                  {card.description}
+                                </p>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
 export default function MainNavbar() {
   const [openMenu, setOpenMenu] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMenu = (menu) => {
     setOpenMenu(openMenu === menu ? null : menu);
@@ -661,191 +839,224 @@ export default function MainNavbar() {
     setOpenMenu(null);
   };
 
-  return (
-    <header className="jakarta-font w-full sticky top-0 z-50 backdrop-blur-sm bg-transparent py-3">
-      {/* Overlay for closing menu */}
-      {openMenu && (
-        <div 
-          onClick={closeMenu}
-          className="fixed inset-0 z-30"
-        />
-      )}
-      
-      {/* Mega Menu */}
-      <MegaMenu type={openMenu} isOpen={!!openMenu} />
-      
-      <nav className="max-w-7xl mx-auto px-4 relative z-50">
-        {/* Desktop Layout */}
-        <div className="hidden lg:flex items-center justify-between gap-2.5">
-          {/* Logo Section */}
-          <div className="flex items-center gap-0.5 px-1.5 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <Link href="/" className="flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200">
-              <div className="w-5 h-5">
-                <img
-                  src="/logo.svg"
-                  alt="Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="text-gray-900">Logo</span>
-            </Link>
-          </div>
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
-          {/* Navigation Menu */}
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
+  return (
+    <>
+      <MobileMenu isOpen={mobileMenuOpen} onClose={closeMobileMenu} />
+      
+      <header className="w-full sticky top-0 z-50 backdrop-blur-sm bg-transparent py-3">
+        {openMenu && (
           <div 
-            className="flex items-center gap-0.5 px-1.5 py-2 rounded-2xl border relative overflow-visible backdrop-blur-md" 
-            style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}
-          >
-            <div className="relative">
+            onClick={closeMenu}
+            className="fixed inset-0 z-30"
+          />
+        )}
+        
+        <MegaMenu type={openMenu} isOpen={!!openMenu} />
+        
+        <nav className="max-w-7xl mx-auto px-4 relative z-50">
+          {/* Desktop Layout */}
+          <div className="hidden lg:flex items-center justify-between gap-2.5">
+            <div className="flex items-center gap-0.5 px-2 py-2.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link href="/" className="flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                <div className="w-5 h-5">
+                  <img
+                    src="/logo.svg"
+                    alt="Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="text-gray-900">Logo</span>
+              </Link>
+            </div>
+
+            <div 
+              className="flex items-center gap-0.5 px-2 py-2.5 rounded-2xl border relative overflow-visible backdrop-blur-md" 
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}
+            >
               <button 
                 onClick={() => toggleMenu('topic')}
-                className={`flex items-center px-3.5 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  openMenu === 'topic' 
-                    ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100' 
-                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className="flex items-center px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
               >
                 Topic
                 <ChevronDown />
               </button>
-            </div>
-            
-            <div className="relative">
+              
               <button 
                 onClick={() => toggleMenu('pathways')}
-                className={`flex items-center px-3.5 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  openMenu === 'pathways' 
-                    ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100' 
-                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className="flex items-center px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
               >
                 Pathways
                 <ChevronDown />
               </button>
-            </div>
-            
-            <div className="relative">
+              
               <button 
                 onClick={() => toggleMenu('resources')}
-                className={`flex items-center px-3.5 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  openMenu === 'resources' 
-                    ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-100' 
-                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className="flex items-center px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
               >
                 Resources
                 <ChevronDown />
               </button>
+              
+              <Link
+                href="/pricing"
+                className="px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Pricing
+              </Link>
+              <Link
+                href="/enterprise"
+                className="px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Enterprise
+              </Link>
             </div>
-            
-            <Link
-              href="/pricing"
-              className="px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/enterprise"
-              className="px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
-            >
-              Enterprise
-            </Link>
+
+            <div className="flex items-center gap-0.5 px-2 py-2.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link
+                href="/login"
+                className="px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="px-5 py-2.5 -my-1 text-sm font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
+                style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
+              >
+                Sign Up
+              </Link>
+            </div>
           </div>
 
-          {/* Auth Section */}
-          <div className="flex items-center gap-1.5 px-1.5 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <Link
-              href="/login"
-              className="px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
-            >
-              Log in
-            </Link>
-            <Link
-              href="/signup"
-              className="px-4 py-1.5 text-sm font-extrabold text-white rounded-lg shadow-sm relative overflow-hidden border"
-              style={{ backgroundImage: 'linear-gradient(90deg, #b614ef, #7a12fa, #b614ef)', borderColor: '#9513f4' }}
-            >
-              Sign Up
-            </Link>
-          </div>
-        </div>
+          {/* Tablet Layout */}
+          <div className="hidden sm:flex lg:hidden items-center justify-between gap-2">
+            {/* Logo Section */}
+            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link href="/" className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                <div className="w-5 h-5">
+                  <img src="/logo.svg" alt="Logo" className="w-full h-full" />
+                </div>
+                <span className="text-gray-900">Logo</span>
+              </Link>
+            </div>
 
-        {/* Tablet Layout */}
-        <div className="hidden sm:flex lg:hidden items-center justify-between gap-2">
-          <div className="flex items-center gap-0.5 px-1.5 py-1.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <Link href="/" className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
-              <div className="w-5 h-5">
-                <img src="/logo.svg" alt="Logo" className="w-full h-full" />
-              </div>
-              <span className="text-gray-900">Logo</span>
-            </Link>
+            {/* Navigation Menu - Compact */}
+            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <button
+                onClick={() => toggleMenu('topic')}
+                className="flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Topic
+                <ChevronDown />
+              </button>
+              <button
+                onClick={() => toggleMenu('pathways')}
+                className="flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Pathways
+                <ChevronDown />
+              </button>
+              <button
+                onClick={() => toggleMenu('resources')}
+                className="flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Resources
+                <ChevronDown />
+              </button>
+              <Link
+                href="/pricing"
+                className="px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Pricing
+              </Link>
+            </div>
+
+            {/* Auth Section */}
+            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link
+                href="/login"
+                className="px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="px-4 py-2.5 -my-1 text-xs font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
+                style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
+              >
+                Sign Up
+              </Link>
+            </div>
           </div>
 
-          <div className="flex items-center gap-0.5 px-1.5 py-1.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <button className="flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
-              Menu
-            </button>
-          </div>
+          {/* Mobile Layout */}
+          <div className="flex sm:hidden items-center justify-between gap-2">
+            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link href="/" className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
+                <img src="/logo.svg" alt="Logo" className="w-5 h-5" />
+                <span className="text-gray-900">Logo</span>
+              </Link>
+            </div>
 
-          <div className="flex items-center gap-1 px-1.5 py-1.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <Link
-              href="/login"
-              className="px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
-            >
-              Log in
-            </Link>
-            <Link
-              href="/signup"
-              className="px-3.5 py-1.5 text-xs font-extrabold text-white rounded-lg shadow-sm relative overflow-hidden border"
-              style={{ backgroundImage: 'linear-gradient(90deg, #b614ef, #7a12fa, #b614ef)', borderColor: '#9513f4' }}
-            >
-              Sign Up
-            </Link>
+            <div className="flex items-center gap-0.5 px-2 py-2 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderColor: 'rgba(140, 140, 170, 0.4)', boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+              <Link
+                href="/login"
+                className="px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="px-3.5 py-2.5 -my-1 text-xs font-black text-white rounded-lg shadow-sm relative overflow-hidden border gradient-wave"
+                style={{ backgroundImage: 'linear-gradient(90deg, #a855f7, #7c3aed, #a855f7)', borderColor: '#8b5cf6' }}
+              >
+                Sign Up
+              </Link>
+              <button
+                onClick={toggleMobileMenu}
+                className="ml-1 px-2 py-1.5 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
+              >
+                <HamburgerIcon />
+              </button>
+            </div>
           </div>
-        </div>
+        </nav>
 
-        {/* Mobile Layout */}
-        <div className="flex sm:hidden items-center justify-between gap-2">
-          <div className="flex items-center gap-0.5 px-1.5 py-1.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <Link href="/" className="flex items-center gap-2 px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200">
-              <img src="/logo.svg" alt="Logo" className="w-5 h-5" />
-              <span className="text-gray-900">Logo</span>
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-1 px-1.5 py-1.5 rounded-2xl border relative overflow-hidden backdrop-blur-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)', borderColor: 'rgba(140, 140, 170, 0.6)', boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)' }}>
-            <Link
-              href="/login"
-              className="px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-200"
-            >
-              Log in
-            </Link>
-            <Link
-              href="/signup"
-              className="px-3 py-1.5 text-xs font-extrabold text-white rounded-lg shadow-sm relative overflow-hidden border"
-              style={{ backgroundImage: 'linear-gradient(90deg, #b614ef, #7a12fa, #b614ef)', borderColor: '#9513f4' }}
-            >
-              Sign Up
-            </Link>
-          </div>
-        </div>
-      </nav>
-
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
+        <style jsx global>{`
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
+          .animate-fadeIn {
+            animation: fadeIn 0.2s ease-out;
           }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.2s ease-out;
-        }
-      `}</style>
-    </header>
+          @keyframes slideIn {
+            from {
+              transform: translateX(100%);
+            }
+            to {
+              transform: translateX(0);
+            }
+          }
+          .animate-slideIn {
+            animation: slideIn 0.3s ease-out;
+          }
+        `}</style>
+      </header>
+    </>
   );
 }

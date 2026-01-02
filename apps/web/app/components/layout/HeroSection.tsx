@@ -3,8 +3,8 @@ import React from "react";
 export default function HeroSection() {
   return (
     <div
-      className="relative h-[380px] overflow-hidden jakarta-font"
-      style={{ backgroundColor: "#f1f1f1" }}
+      className="relative h-[380px] bg-white overflow-hidden jakarta-font"
+      
     >
       {/* Google Font Import for Just Me Again Down Here */}
       <style>
@@ -15,7 +15,7 @@ export default function HeroSection() {
 
       {/* Left Floating Element */}
       <div className="absolute left-4 sm:left-6 md:left-8 lg:left-12 top-8 sm:top-10 md:top-12 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-lg sm:rounded-xl rotate-12 flex items-center justify-center backdrop-blur-sm bg-gradient-to-br from-blue-500 to-purple-500 p-[2px]">
-        <div className="w-full h-full bg-gray-100 rounded-lg sm:rounded-xl flex items-center justify-center">
+        <div className="w-full h-full bg-white rounded-lg sm:rounded-xl flex items-center justify-center">
           <span className="bg-gradient-to-br from-blue-600 to-purple-600 bg-clip-text text-transparent font-bold text-center text-[10px] sm:text-xs md:text-xs lg:text-sm rotate-[-12deg] leading-tight">
             Floating
             <br />
@@ -26,7 +26,7 @@ export default function HeroSection() {
 
       {/* Right Floating Element */}
       <div className="absolute right-4 sm:right-6 md:right-8 lg:right-12 top-20 sm:top-24 md:top-28 lg:top-32 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-lg sm:rounded-xl rotate-12 flex items-center justify-center backdrop-blur-sm bg-gradient-to-br from-blue-500 to-purple-500 p-[2px]">
-        <div className="w-full h-full bg-gray-100 rounded-lg sm:rounded-xl flex items-center justify-center">
+        <div className="w-full h-full bg-white rounded-lg sm:rounded-xl flex items-center justify-center">
           <span className="bg-gradient-to-br from-blue-600 to-purple-600 bg-clip-text text-transparent font-bold text-center text-[10px] sm:text-xs md:text-xs lg:text-sm rotate-[-12deg] leading-tight">
             Floating
             <br />
