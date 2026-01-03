@@ -2,6 +2,7 @@ import TopBar from "./components/layout/TopBar";
 import MainNavbar from "./components/layout/MainNavBar";
 import HeroSection from "./components/layout/HeroSection";
 import ExploreTopics from "./components/layout/ExploreTopics";
+import LearningPage from "./components/layout/LearningPage";
 
 export default function Page() {
   return (
@@ -21,6 +22,10 @@ export default function Page() {
 
       {/*EXPLORE TOPICS*/}
       <ExploreTopics/>
+
+      {/*LERANING PAGE*/}
+      <LearningPage/>
+
 
 
     </div>

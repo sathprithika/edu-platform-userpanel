@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import cloudImage from "../common/images/beautiful-white-cloud.png";
+import cloudImage2 from "../common/images/11506816.png";
 
 const ExploreTopics = () => {
   const router = useRouter();
@@ -12,8 +14,9 @@ const ExploreTopics = () => {
         "Discover how AI creates artificial intelligence, enabling systems to generate content, art, and solutions autonomously. This includes usage like ChatGPT, MidJourney, and more.",
       views: "1K Views",
       tag: "#AI",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-      link: "/topics/generative-ai"
+      image:
+        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      link: "/topics/generative-ai",
     },
     {
       title: "Digital Marketing",
@@ -21,8 +24,9 @@ const ExploreTopics = () => {
         "Dive into social and digital marketing, learning to promote brands and products online. Use familiar creator social tools to expand reach and revenue insights.",
       views: "1K Views",
       tag: "#Digital Marketing",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      link: "/topics/digital-marketing"
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      link: "/topics/digital-marketing",
     },
     {
       title: "AWS (Server)",
@@ -30,8 +34,9 @@ const ExploreTopics = () => {
         "Learn how to set up and manage cloud infrastructure with Amazon Web Services. Dive into cloud computing, storage, and architecture for modern applications.",
       views: "1K Views",
       tag: "#AWS",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-      link: "/topics/aws-server"
+      image:
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+      link: "/topics/aws-server",
     },
     {
       title: "Meta Platform",
@@ -39,8 +44,9 @@ const ExploreTopics = () => {
         "Learning AI Technology not new a great and advance technology in our system with deep learning. This robust tools makes AI Facebook, WhatsApp, and Instagram's digital ecosystems.",
       views: "1K Views",
       tag: "#Meta Platform",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
-      link: "/topics/meta-platform"
+      image:
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80",
+      link: "/topics/meta-platform",
     },
   ];
 
@@ -63,8 +69,8 @@ const ExploreTopics = () => {
 
   return (
     <div className="jakarta-font w-full bg-white relative overflow-hidden">
-      {/* Floating Tags - Only visible on desktop (lg and above) */}
-      <div className="hidden lg:block">
+      {/* Floating Tags - Only visible on large desktop screens (xl and above) */}
+      <div className="hidden xl:block">
         {floatingTags.map((tag, index) => (
           <div
             key={index}
@@ -104,17 +110,18 @@ const ExploreTopics = () => {
               key={index}
               onClick={() => handleCardClick(topic.link)}
               className="rounded-2xl relative overflow-visible backdrop-blur-md cursor-pointer transition-all duration-300 p-4 md:p-5 lg:p-6"
-              style={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                borderColor: 'rgba(140, 140, 170, 0.4)', 
-                boxShadow: '0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-                border: '1px solid rgba(140, 140, 170, 0.4)'
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.95)",
+                borderColor: "rgba(140, 140, 170, 0.4)",
+                boxShadow:
+                  "0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+                border: "1px solid rgba(140, 140, 170, 0.4)",
               }}
             >
               {/* Image */}
               <div className="w-full aspect-video rounded-xl md:rounded-2xl mb-4 md:mb-5 overflow-hidden bg-gray-200">
-                <img 
-                  src={topic.image} 
+                <img
+                  src={topic.image}
                   alt={topic.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
@@ -178,311 +185,107 @@ const ExploreTopics = () => {
         </div>
       </div>
 
-      {/* REALISTIC CLOUD SECTION - EXACT NATURAL SHAPES */}
-      <div 
-        className="relative w-full"
-        style={{ 
-          height: '400px',
-          marginTop: '-80px',
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(252,253,254,0.15) 18%, rgba(246,248,250,0.35) 35%, rgba(240,243,246,0.58) 52%, rgba(245,247,250,0.8) 70%, rgba(250,251,252,0.92) 85%, rgb(255,255,255) 100%)'
-        }}
-      >
-        {/* LEFT SIDE CLOUD FORMATIONS */}
-        
-        {/* Top Left - Large puffy cloud */}
-        <div 
-          className="absolute"
-          style={{
-            width: '380px',
-            height: '150px',
-            left: '2%',
-            top: '8%',
-            background: 'radial-gradient(ellipse 120% 100% at 30% 45%, rgba(255,255,255,0.98) 0%, rgba(252,253,254,0.92) 15%, rgba(248,250,252,0.82) 28%, rgba(243,246,249,0.68) 42%, rgba(238,242,246,0.5) 58%, rgba(233,238,243,0.32) 75%, transparent 92%)',
-            borderRadius: '65% 35% 48% 52%',
-            filter: 'blur(32px)',
-            transform: 'rotate(-4deg) scaleX(1.1)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '280px',
-            height: '115px',
-            left: '3.5%',
-            top: '10%',
-            background: 'radial-gradient(circle at 52% 50%, rgba(255,255,255,0.94) 0%, rgba(250,251,253,0.85) 20%, rgba(245,247,250,0.7) 40%, rgba(240,243,246,0.5) 62%, transparent 85%)',
-            borderRadius: '58% 42% 45% 55%',
-            filter: 'blur(24px)',
-            transform: 'rotate(3deg)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '200px',
-            height: '85px',
-            left: '5%',
-            top: '12%',
-            background: 'radial-gradient(circle at 48% 52%, rgba(255,255,255,0.88) 0%, rgba(248,250,252,0.72) 28%, rgba(243,245,248,0.52) 60%, transparent 82%)',
-            borderRadius: '50%',
-            filter: 'blur(18px)',
-          }}
-        />
+      {/* CLOUD TRANSITION SECTION */}
+      <div className="w-full relative h-32 md:h-40 lg:h-48 overflow-hidden">
+        {/* Cloud Images */}
+        <div className="absolute inset-0 w-full h-full">
+          {/* Cloud 1 - Left */}
+          <img
+            src={cloudImage2.src}
+            alt="1"
+            className="absolute top-0 left-12 w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
+            style={{ transform: "translateY(-20%)" }}
+          />
 
-        {/* Middle Left - Elongated horizontal cloud */}
-        <div 
-          className="absolute"
-          style={{
-            width: '450px',
-            height: '130px',
-            left: '4%',
-            top: '32%',
-            background: 'radial-gradient(ellipse 140% 90% at 38% 48%, rgba(250,252,253,0.94) 0%, rgba(246,248,251,0.86) 18%, rgba(241,244,248,0.74) 35%, rgba(236,240,245,0.6) 52%, rgba(231,236,242,0.42) 70%, rgba(236,240,245,0.24) 85%, transparent 95%)',
-            borderRadius: '52% 48% 45% 55%',
-            filter: 'blur(36px)',
-            transform: 'rotate(-2deg) scaleX(1.15)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '340px',
-            height: '105px',
-            left: '5%',
-            top: '33.5%',
-            background: 'radial-gradient(ellipse at 55% 50%, rgba(248,250,252,0.88) 0%, rgba(243,246,249,0.76) 25%, rgba(238,242,246,0.6) 50%, rgba(233,238,243,0.4) 75%, transparent 92%)',
-            borderRadius: '48% 52% 50% 50%',
-            filter: 'blur(28px)',
-            transform: 'rotate(2deg)',
-          }}
-        />
+          {/* Cloud 2 - Center */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-72 md:w-96 lg:w-[28rem] h-auto opacity-60 mix-blend-multiply"
+          />
 
-        {/* Lower Left - Medium sized cloud cluster */}
-        <div 
-          className="absolute"
-          style={{
-            width: '420px',
-            height: '155px',
-            left: '1%',
-            top: '56%',
-            background: 'radial-gradient(ellipse 125% 95% at 35% 46%, rgba(245,247,250,0.92) 0%, rgba(240,243,247,0.84) 20%, rgba(235,239,244,0.72) 38%, rgba(230,235,241,0.58) 56%, rgba(235,239,244,0.38) 75%, rgba(242,245,248,0.2) 88%, transparent 96%)',
-            borderRadius: '55% 45% 52% 48%',
-            filter: 'blur(38px)',
-            transform: 'rotate(-3deg) scaleX(1.08)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '320px',
-            height: '125px',
-            left: '2.5%',
-            top: '57.5%',
-            background: 'radial-gradient(circle at 50% 48%, rgba(243,246,249,0.86) 0%, rgba(238,242,246,0.72) 26%, rgba(233,238,243,0.56) 52%, rgba(238,242,246,0.34) 78%, transparent 90%)',
-            borderRadius: '50%',
-            filter: 'blur(30px)',
-            transform: 'rotate(2deg)',
-          }}
-        />
+          {/* Cloud 3 - Right */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-0 right-12 w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
+            style={{ transform: "translateY(-10%)" }}
+          />
 
-        {/* Bottom Left - Large blending cloud */}
-        <div 
-          className="absolute"
-          style={{
-            width: '520px',
-            height: '175px',
-            left: '0%',
-            top: '72%',
-            background: 'radial-gradient(ellipse 135% 100% at 40% 44%, rgba(242,245,248,0.88) 0%, rgba(237,241,246,0.78) 22%, rgba(232,237,243,0.66) 42%, rgba(237,241,246,0.5) 62%, rgba(242,245,248,0.32) 80%, rgba(248,250,252,0.16) 92%, transparent 98%)',
-            borderRadius: '48% 52% 50% 50%',
-            filter: 'blur(42px)',
-            transform: 'rotate(-2deg) scaleX(1.12)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '400px',
-            height: '145px',
-            left: '1.5%',
-            top: '73.5%',
-            background: 'radial-gradient(circle at 48% 50%, rgba(240,243,247,0.82) 0%, rgba(235,239,244,0.68) 28%, rgba(230,235,241,0.5) 58%, rgba(240,243,247,0.28) 84%, transparent 94%)',
-            borderRadius: '50%',
-            filter: 'blur(34px)',
-          }}
-        />
+          {/* Cloud 4 - Bottom Left */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-0 left-1/4 w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
+            style={{ transform: "translateY(10%)" }}
+          />
 
-        {/* RIGHT SIDE CLOUD FORMATIONS */}
-        
-        {/* Top Right - Rounded cloud cluster */}
-        <div 
-          className="absolute"
-          style={{
-            width: '400px',
-            height: '160px',
-            right: '2%',
-            top: '6%',
-            background: 'radial-gradient(ellipse 115% 100% at 42% 42%, rgba(255,255,255,0.97) 0%, rgba(252,253,254,0.91) 16%, rgba(248,250,252,0.81) 30%, rgba(243,246,249,0.66) 45%, rgba(238,242,246,0.48) 62%, rgba(233,238,243,0.3) 78%, transparent 90%)',
-            borderRadius: '40% 60% 52% 48%',
-            filter: 'blur(34px)',
-            transform: 'rotate(5deg) scaleX(1.05)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '300px',
-            height: '125px',
-            right: '3.5%',
-            top: '8%',
-            background: 'radial-gradient(circle at 56% 48%, rgba(255,255,255,0.92) 0%, rgba(250,251,253,0.83) 22%, rgba(245,247,250,0.68) 44%, rgba(240,243,246,0.48) 68%, transparent 88%)',
-            borderRadius: '45% 55% 50% 50%',
-            filter: 'blur(26px)',
-            transform: 'rotate(-4deg)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '210px',
-            height: '92px',
-            right: '5%',
-            top: '10.5%',
-            background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.86) 0%, rgba(248,250,252,0.7) 30%, rgba(243,245,248,0.5) 62%, transparent 84%)',
-            borderRadius: '50%',
-            filter: 'blur(20px)',
-          }}
-        />
+          {/* Cloud 5 - Bottom Right */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-0 right-1/4 w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
+            style={{ transform: "translateY(15%)" }}
+          />
 
-        {/* Middle Right - Wide stretched cloud */}
-        <div 
-          className="absolute"
-          style={{
-            width: '480px',
-            height: '140px',
-            right: '3%',
-            top: '30%',
-            background: 'radial-gradient(ellipse 145% 88% at 44% 46%, rgba(250,252,253,0.96) 0%, rgba(246,248,251,0.88) 17%, rgba(241,244,248,0.76) 33%, rgba(236,240,245,0.62) 50%, rgba(231,236,242,0.44) 68%, rgba(236,240,245,0.26) 84%, transparent 94%)',
-            borderRadius: '48% 52% 52% 48%',
-            filter: 'blur(38px)',
-            transform: 'rotate(3deg) scaleX(1.18)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '360px',
-            height: '112px',
-            right: '4.5%',
-            top: '31.5%',
-            background: 'radial-gradient(ellipse at 52% 52%, rgba(248,250,252,0.9) 0%, rgba(243,246,249,0.78) 24%, rgba(238,242,246,0.62) 48%, rgba(233,238,243,0.42) 74%, transparent 90%)',
-            borderRadius: '50% 50% 48% 52%',
-            filter: 'blur(30px)',
-            transform: 'rotate(-2deg)',
-          }}
-        />
+          {/* NEW SMALL CLOUDS - Left Edge */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/3 left-0 w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
+            style={{ transform: "translateX(-20%)" }}
+          />
 
-        {/* Lower Right - Irregular shaped cloud */}
-        <div 
-          className="absolute"
-          style={{
-            width: '440px',
-            height: '165px',
-            right: '1.5%',
-            top: '54%',
-            background: 'radial-gradient(ellipse 128% 98% at 46% 44%, rgba(245,247,250,0.94) 0%, rgba(240,243,247,0.86) 19%, rgba(235,239,244,0.74) 37%, rgba(230,235,241,0.6) 55%, rgba(235,239,244,0.4) 73%, rgba(242,245,248,0.22) 87%, transparent 95%)',
-            borderRadius: '42% 58% 48% 52%',
-            filter: 'blur(40px)',
-            transform: 'rotate(4deg) scaleX(1.1)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '340px',
-            height: '132px',
-            right: '3%',
-            top: '55.5%',
-            background: 'radial-gradient(circle at 52% 50%, rgba(243,246,249,0.88) 0%, rgba(238,242,246,0.74) 25%, rgba(233,238,243,0.58) 50%, rgba(238,242,246,0.36) 76%, transparent 92%)',
-            borderRadius: '50%',
-            filter: 'blur(32px)',
-            transform: 'rotate(-3deg)',
-          }}
-        />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-1/4 left-2 w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
+            style={{ transform: "translateY(5%)" }}
+          />
 
-        {/* Bottom Right - Extended blending cloud */}
-        <div 
-          className="absolute"
-          style={{
-            width: '540px',
-            height: '182px',
-            right: '0%',
-            top: '70%',
-            background: 'radial-gradient(ellipse 138% 102% at 48% 42%, rgba(242,245,248,0.9) 0%, rgba(237,241,246,0.8) 21%, rgba(232,237,243,0.68) 40%, rgba(237,241,246,0.52) 60%, rgba(242,245,248,0.34) 78%, rgba(248,250,252,0.18) 90%, transparent 97%)',
-            borderRadius: '52% 48% 48% 52%',
-            filter: 'blur(44px)',
-            transform: 'rotate(2deg) scaleX(1.14)',
-          }}
-        />
-        <div 
-          className="absolute"
-          style={{
-            width: '420px',
-            height: '152px',
-            right: '1.5%',
-            top: '71.5%',
-            background: 'radial-gradient(circle at 50% 48%, rgba(240,243,247,0.84) 0%, rgba(235,239,244,0.7) 26%, rgba(230,235,241,0.52) 54%, rgba(240,243,247,0.3) 82%, transparent 93%)',
-            borderRadius: '50%',
-            filter: 'blur(36px)',
-          }}
-        />
+          {/* NEW SMALL CLOUDS - Right Edge */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/3 right-0 w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
+            style={{ transform: "translateX(20%)" }}
+          />
 
-        {/* CENTER - Very minimal subtle wisps */}
-        
-        {/* Top center wisp */}
-        <div 
-          className="absolute"
-          style={{
-            width: '220px',
-            height: '85px',
-            left: '42%',
-            top: '12%',
-            background: 'radial-gradient(ellipse at 50% 50%, rgba(252,253,254,0.5) 0%, rgba(246,248,250,0.32) 40%, rgba(240,243,246,0.18) 72%, transparent 90%)',
-            borderRadius: '50%',
-            filter: 'blur(28px)',
-            opacity: 0.7,
-          }}
-        />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-1/4 right-2 w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
+            style={{ transform: "translateY(5%)" }}
+          />
 
-        {/* Middle center wisp */}
-        <div 
-          className="absolute"
-          style={{
-            width: '260px',
-            height: '95px',
-            left: '40%',
-            top: '36%',
-            background: 'radial-gradient(ellipse at 48% 52%, rgba(248,250,252,0.48) 0%, rgba(243,245,248,0.3) 42%, rgba(237,240,244,0.16) 75%, transparent 92%)',
-            borderRadius: '50%',
-            filter: 'blur(32px)',
-            opacity: 0.65,
-          }}
-        />
+          {/* ADDITIONAL FILLER CLOUDS - Top Edges */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-2 left-1/4 -translate-x-1/2 w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
+            style={{ transform: "translateY(-30%)" }}
+          />
 
-        {/* Lower center wisp */}
-        <div 
-          className="absolute"
-          style={{
-            width: '240px',
-            height: '90px',
-            left: '41%',
-            top: '60%',
-            background: 'radial-gradient(ellipse at 52% 48%, rgba(243,246,249,0.44) 0%, rgba(238,241,245,0.28) 45%, rgba(233,237,242,0.14) 78%, transparent 94%)',
-            borderRadius: '50%',
-            filter: 'blur(30px)',
-            opacity: 0.6,
-          }}
-        />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-2 right-1/4 translate-x-1/2 w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
+            style={{ transform: "translateY(-30%)" }}
+          />
+        </div>
+
+        {/* Gradient Overlays for Smooth Blending */}
+        {/* Top gradient */}
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-10"></div>
+
+        {/* Bottom gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-10"></div>
+
+        {/* Left gradient */}
+        <div className="absolute top-0 bottom-0 left-0 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
+
+        {/* Right gradient */}
+        <div className="absolute top-0 bottom-0 right-0 w-24 md:w-32 lg:w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
       </div>
 
       {/* BOTTOM SECTION */}
@@ -491,16 +294,16 @@ const ExploreTopics = () => {
           <p className="handwritten-cursive text-blue-600 text-base md:text-lg lg:text-xl mb-3 md:mb-4">
             Step into a smarter way to learn
           </p>
-          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
             Build Real{" "}
-            <span className="inline-block text-blue-600 rounded-full border-2 border-black bg-white font-bold shadow-sm px-3 md:px-4">
+            <span className="inline-block text-blue-600 rounded-full border-2 border-black bg-white font-bold shadow-sm px-2 sm:px-3 md:px-4">
               Understanding
             </span>{" "}
             In Every Subject You <span className="text-blue-600">Explore</span>
           </h3>
           <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
-            We bring you the clarity and smart tools that transform how you learn,
-            helping you grasp concepts deeper and remember them longer.
+            We bring you the clarity and smart tools that transform how you
+            learn, helping you grasp concepts deeper and remember them longer.
           </p>
         </div>
       </div>
