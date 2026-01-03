@@ -1,6 +1,7 @@
 import TopBar from "./components/layout/TopBar";
 import MainNavbar from "./components/layout/MainNavBar";
 import HeroSection from "./components/layout/HeroSection";
+import ExploreTopics from "./components/layout/ExploreTopics";
 
 export default function Page() {
   return (
@@ -17,6 +18,9 @@ export default function Page() {
 
       {/*HERO SECTION*/}
       <HeroSection/>
+
+      {/*EXPLORE TOPICS*/}
+      <ExploreTopics/>
 
 
     </div>
