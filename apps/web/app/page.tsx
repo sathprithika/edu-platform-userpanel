@@ -3,6 +3,7 @@ import MainNavbar from "./components/layout/MainNavBar";
 import HeroSection from "./components/layout/HeroSection";
 import ExploreTopics from "./components/layout/ExploreTopics";
 import LearningPage from "./components/layout/LearningPage";
+import Card from "./components/layout/Card";
 
 
 
@@ -27,6 +28,8 @@ export default function Page() {
 
       {/*LEARNING PAGE*/}
       <LearningPage/>
+
+      <Card/>
      
 
 
