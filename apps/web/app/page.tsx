@@ -4,6 +4,7 @@ import HeroSection from "./components/layout/HeroSection";
 import ExploreTopics from "./components/layout/ExploreTopics";
 import LearningPage from "./components/layout/LearningPage";
 import Card from "./components/layout/Card";
+import Footer from "./components/layout/Footer";
 
 
 
@@ -30,6 +31,8 @@ export default function Page() {
       <LearningPage/>
 
       <Card/>
+
+      <Footer/>
      
 
 
