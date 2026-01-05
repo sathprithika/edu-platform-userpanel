@@ -4,6 +4,7 @@ import HeroSection from "./components/layout/HeroSection";
 import ExploreTopics from "./components/layout/ExploreTopics";
 import LearningPage from "./components/layout/LearningPage";
 
+
 export default function Page() {
   return (
     <div
@@ -23,9 +24,8 @@ export default function Page() {
       {/*EXPLORE TOPICS*/}
       <ExploreTopics/>
 
-      {/*LERANING PAGE*/}
+      {/*LEARNING PAGE*/}
       <LearningPage/>
-
 
 
     </div>
