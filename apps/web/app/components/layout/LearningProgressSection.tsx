@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import FeaturesSection from "./FeaturesSection";
 
 const ProgressSection = () => {
   const router = useRouter();
@@ -57,30 +58,33 @@ const ProgressSection = () => {
   };
 
   return (
+    <>
     <div className="jakarta-font w-full bg-white relative overflow-hidden">
-        <style jsx>{`
+      <style jsx>{`
         @keyframes float-1 {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0) rotate(-8deg);
           }
           50% {
             transform: translateY(-20px) rotate(-8deg);
           }
         }
-        
+
         @keyframes float-2 {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0) rotate(8deg);
           }
           50% {
             transform: translateY(-20px) rotate(8deg);
           }
         }
-        
+
         .float-1 {
           animation: float-1 3s ease-in-out infinite;
         }
-        
+
         .float-2 {
           animation: float-2 3s ease-in-out infinite;
           animation-delay: 0.5s;
@@ -220,6 +224,12 @@ const ProgressSection = () => {
         </div>
       </div>
     </div>
+
+     {/* Features Section - Separate */}
+     <FeaturesSection />
+   
+
+    </>
   );
 };
 

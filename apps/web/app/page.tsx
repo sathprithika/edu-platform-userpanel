@@ -5,6 +5,7 @@ import ExploreTopics from "./components/layout/ExploreTopics";
 import LearningPage from "./components/layout/LearningPage";
 
 
+
 export default function Page() {
   return (
     <div
@@ -26,6 +27,7 @@ export default function Page() {
 
       {/*LEARNING PAGE*/}
       <LearningPage/>
+     
 
 
     </div>
