@@ -203,11 +203,11 @@ const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16 md:mb-20 lg:mb-24">
-          <p className="blue-river-font text-blue-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
+          <p className="blue-river-font text-purple-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
             Features designed for knowledge seekers
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-4">
-            Learn Smarter As We Build <span className="text-blue-600">Smart</span>
+            Learn Smarter As We Build <span className="text-purple-600">Smart</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-4">
             Every feature we add is designed to transform how you acquire, retain, and apply knowledge.

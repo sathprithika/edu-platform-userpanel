@@ -2,7 +2,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import cloudImage from "../common/images/beautiful-white-cloud.png";
+
+// import cloudImage2 from "../common/images/cloud.jpg";
+
 import cloudImage2 from "../common/images/11506816.png";
+
 
 // Arrow SVG Constants
 const LeftArrowIcon = ({ className }) => (
@@ -91,12 +95,36 @@ const ExploreTopics = () => {
   ];
 
   const floatingTags = [
-    { text: "#AI", top: "5%", left: "8%", rotate: "-5deg" },
-    { text: "#AWS", top: "10%", left: "4%", rotate: "3deg" },
-    { text: "#Digital Marketing", top: "10%", left: "12%", rotate: "-8deg" },
-    { text: "#Vibe Coding", top: "5%", right: "8%", rotate: "8deg" },
-    { text: "#R&D", top: "12%", right: "4%", rotate: "12deg" },
-    { text: "#Meta Platform", top: "10%", right: "12%", rotate: "-10deg" },
+    {
+      text: "#AI",
+      id: "tag-1",
+      className: "floating-tag-1",
+    },
+    {
+      text: "#AWS",
+      id: "tag-2",
+      className: "floating-tag-2",
+    },
+    {
+      text: "#Digital Marketing",
+      id: "tag-3",
+      className: "floating-tag-3",
+    },
+    {
+      text: "#Vibe Coding",
+      id: "tag-4",
+      className: "floating-tag-4",
+    },
+    {
+      text: "#R&D",
+      id: "tag-5",
+      className: "floating-tag-5",
+    },
+    {
+      text: "#Meta Platform",
+      id: "tag-6",
+      className: "floating-tag-6",
+    },
   ];
 
   // Handle responsive items per page
@@ -137,18 +165,17 @@ const ExploreTopics = () => {
 
   return (
     <div className="jakarta-font w-full bg-white relative overflow-hidden">
-      {/* Floating Tags - Only visible on large desktop screens (xl and above) */}
-      <div className="hidden xl:block">
+      {/* Floating Tags - Responsive for all screen sizes */}
+      <div className="floating-tags-container">
         {floatingTags.map((tag, index) => (
           <div
-            key={index}
-            className="absolute bg-white px-5 py-2.5 lg:px-6 lg:py-3 rounded-full shadow-lg text-sm lg:text-base font-bold text-gray-900 hover:shadow-xl transition-shadow duration-300 border border-gray-100 z-20"
-            style={{
-              top: tag.top,
-              left: tag.left,
-              right: tag.right,
-              transform: `rotate(${tag.rotate})`,
-            }}
+            key={tag.id}
+            className={`${tag.className} absolute bg-white rounded-full shadow-lg font-bold text-gray-900 hover:shadow-xl transition-shadow duration-300 border border-gray-100 z-20
+                       px-3 py-1.5 text-xs
+                       sm:px-4 sm:py-2 sm:text-sm
+                       md:px-4 md:py-2 md:text-sm
+                       lg:px-5 lg:py-2.5 lg:text-base
+                       xl:px-6 xl:py-3`}
           >
             {tag.text}
           </div>
@@ -215,7 +242,9 @@ const ExploreTopics = () => {
                 <div
                   key={index}
                   className="flex-shrink-0"
-                  style={{ width: `calc(${100 / itemsPerPage}% - ${(itemsPerPage - 1) * 24 / itemsPerPage}px)` }}
+                  style={{
+                    width: `calc(${100 / itemsPerPage}% - ${((itemsPerPage - 1) * 24) / itemsPerPage}px)`,
+                  }}
                 >
                   <div
                     onClick={() => handleCardClick(topic.link)}
@@ -291,22 +320,22 @@ const ExploreTopics = () => {
           </div>
 
           {/* Mobile/Tablet View - Horizontal Scroll */}
-          <div 
+          <div
             ref={carouselRef}
             className="lg:hidden overflow-x-auto scrollbar-hide mt-4 md:mt-6"
             style={{
-              scrollSnapType: 'x mandatory',
-              WebkitOverflowScrolling: 'touch',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
+              scrollSnapType: "x mandatory",
+              WebkitOverflowScrolling: "touch",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
             <div className="flex gap-4 md:gap-6 px-1">
               {topics.map((topic, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex-shrink-0 w-[85vw] sm:w-[80vw] md:w-[45vw]"
-                  style={{ scrollSnapAlign: 'center' }}
+                  style={{ scrollSnapAlign: "center" }}
                 >
                   <div
                     onClick={() => handleCardClick(topic.link)}
@@ -504,15 +533,39 @@ const ExploreTopics = () => {
       {/* BOTTOM SECTION */}
       <div className="w-full bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-12 md:py-16 lg:py-20">
-          <p className="blue-river-font text-blue-600 text-sm sm:text-base md:text-lg lg:text-xl mb-2 sm:mb-3 md:mb-4">
+          <p className="blue-river-font text-purple-600 text-sm sm:text-base  md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4">
             Step into a smarter way to learn
           </p>
           <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 leading-tight px-4">
             Build Real{" "}
-            <span className="inline-block text-blue-600 rounded-full border-2 border-black bg-white font-bold shadow-sm px-2 sm:px-3 md:px-4">
-              Understanding
+            <span className="relative inline-block mx-1 md:mx-2">
+              <span className="relative z-10 text-purple-600">
+                Understanding
+              </span>
+              {/* Oval border using SVG - responsive */}
+              <svg
+                className="absolute top-1/2 left-1/2 pointer-events-none w-full h-full"
+                style={{
+                  transform: "translate(-50%, -50%)",
+                  width: "105%",
+                  height: "140%",
+                }}
+                viewBox="0 0 320 70"
+                preserveAspectRatio="none"
+              >
+                <ellipse
+                  cx="160"
+                  cy="35"
+                  rx="155"
+                  ry="30"
+                  fill="none"
+                  stroke="#000000"
+                  strokeWidth="2.5"
+                />
+              </svg>
             </span>{" "}
-            In Every Subject You <span className="text-blue-600">Explore</span>
+            In Every Subject You{" "}
+            <span className="text-purple-600">Explore</span>
           </h3>
           <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 max-w-3xl mx-auto px-4">
             We bring you the clarity and smart tools that transform how you
@@ -528,6 +581,102 @@ const ExploreTopics = () => {
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+
+        /* Floating Tags Responsive Positioning */
+        /* Mobile View - Only 2 tags (1 left, 1 right) */
+        .floating-tag-1 {
+          top: 1%;
+          left: 3%;
+          transform: rotate(-5deg);
+        }
+        .floating-tag-2 {
+          display: none;
+        }
+        .floating-tag-3 {
+          display: none;
+        }
+        .floating-tag-4 {
+          top: 1%;
+          right: 3%;
+          transform: rotate(8deg);
+        }
+        .floating-tag-5 {
+          display: none;
+        }
+        .floating-tag-6 {
+          display: none;
+        }
+
+        /* Tablet View - 4 tags (2 left, 2 right) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .floating-tag-1 {
+            top: 1%;
+            left: 3%;
+            transform: rotate(-5deg);
+          }
+          .floating-tag-2 {
+            display: block;
+            top: 6%;
+            left: 1%;
+            transform: rotate(3deg);
+          }
+          .floating-tag-3 {
+            display: none;
+          }
+          .floating-tag-4 {
+            top: 1%;
+            right: 3%;
+            transform: rotate(8deg);
+          }
+          .floating-tag-5 {
+            display: block;
+            top: 6%;
+            right: 1%;
+            transform: rotate(12deg);
+          }
+          .floating-tag-6 {
+            display: none;
+          }
+        }
+
+        /* Desktop View - All 6 tags */
+        @media (min-width: 1024px) {
+          .floating-tag-1 {
+            top: 5%;
+            left: 8%;
+            transform: rotate(-5deg);
+          }
+          .floating-tag-2 {
+            display: block;
+            top: 10%;
+            left: 4%;
+            transform: rotate(3deg);
+          }
+          .floating-tag-3 {
+            display: block;
+            top: 10%;
+            left: 12%;
+            transform: rotate(-8deg);
+          }
+          .floating-tag-4 {
+            top: 5%;
+            right: 8%;
+            transform: rotate(8deg);
+          }
+          .floating-tag-5 {
+            display: block;
+            top: 12%;
+            right: 4%;
+            transform: rotate(12deg);
+          }
+          .floating-tag-6 {
+            display: block;
+            top: 10%;
+            right: 12%;
+            left: auto;
+            transform: rotate(-10deg);
+          }
         }
       `}</style>
     </div>

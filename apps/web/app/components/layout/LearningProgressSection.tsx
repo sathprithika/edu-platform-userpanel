@@ -129,12 +129,12 @@ const ProgressSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-16 lg:py-20">
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <p className="blue-river-font text-blue-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
+          <p className="blue-river-font text-purple-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
             Pick up right where you left off
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-4">
             Continue Your Progress{" "}
-            <span className="text-blue-600">Seamlessly</span>
+            <span className="text-purple-600">Seamlessly</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-4">
             We keep track of what you've been exploring, so you can revisit and
