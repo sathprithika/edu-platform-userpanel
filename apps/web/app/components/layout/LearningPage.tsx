@@ -9,7 +9,7 @@ export default function LearningPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-8 md:mb-12 lg:mb-16">
           {/* Left Side - Text Content */}
           <div className="flex flex-col justify-center order-2 md:order-1">
-            <p className="handwritten-cursive text-blue-600 text-sm sm:text-base md:text-lg mb-1 md:mb-2">
+            <p className="blue-river-font text-blue-600 text-sm sm:text-base md:text-lg mb-1 md:mb-2">
               Learn smarter, not harder
             </p>
             <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black mb-2 md:mb-3 lg:mb-4 leading-tight">
@@ -383,7 +383,7 @@ export default function LearningPage() {
 
           {/* Right Side - Text Content */}
           <div className="flex flex-col justify-center order-2">
-            <p className="handwritten-cursive text-blue-600 text-sm sm:text-base md:text-lg mb-1 md:mb-2">
+            <p className="blue-river-font text-blue-600 text-sm sm:text-base md:text-lg mb-1 md:mb-2">
               Your learning, your way
             </p>
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black mb-2 md:mb-3 lg:mb-4 leading-tight">

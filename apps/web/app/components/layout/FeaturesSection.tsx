@@ -203,7 +203,7 @@ const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16 md:mb-20 lg:mb-24">
-          <p className="handwritten-cursive text-blue-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
+          <p className="blue-river-font text-blue-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
             Features designed for knowledge seekers
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-4">

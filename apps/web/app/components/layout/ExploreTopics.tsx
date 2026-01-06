@@ -1,11 +1,51 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import cloudImage from "../common/images/beautiful-white-cloud.png";
 import cloudImage2 from "../common/images/11506816.png";
 
+// Arrow SVG Constants
+const LeftArrowIcon = ({ className }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M19 12H5M5 12l6 6m-6-6l6-6"
+    />
+  </svg>
+);
+
+const RightArrowIcon = ({ className }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M5 12h14m-6-6l6 6-6 6"
+    />
+  </svg>
+);
+
 const ExploreTopics = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
   const router = useRouter();
+  const carouselRef = useRef(null);
 
   const topics = [
     {
@@ -59,6 +99,34 @@ const ExploreTopics = () => {
     { text: "#Meta Platform", top: "10%", right: "12%", rotate: "-10deg" },
   ];
 
+  // Handle responsive items per page
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1); // Mobile: 1 card
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2); // Tablet: 2 cards
+      } else {
+        setItemsPerPage(3); // Desktop: 3 cards
+      }
+      setCurrentIndex(0); // Reset to first item on resize
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, topics.length - itemsPerPage);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
+  };
+
   const handleExploreMore = () => {
     router.push("/explore");
   };
@@ -88,92 +156,237 @@ const ExploreTopics = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-16 lg:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:py-12 lg:py-16 xl:py-20">
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <p className="handwritten-cursive text-blue-600 text-lg md:text-xl lg:text-2xl mb-2 md:mb-3">
+          <p className="blue-river-font text-purple-600 text-base md:text-lg lg:text-xl xl:text-2xl mb-2 md:mb-3">
             Discover & Learn
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 md:mb-4">
-            Explore <span className="text-blue-600">Topics</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2 md:mb-3 lg:mb-4 px-4">
+            Explore <span className="text-purple-600">Topics</span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-4">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 max-w-3xl mx-auto px-4">
             Learn key technology skills for students, professionals, and
             businesses in today's connected world.
           </p>
         </div>
 
-        {/* Topic Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
-          {topics.map((topic, index) => (
+        {/* Carousel Container with Navigation */}
+        <div className="relative px-1">
+          {/* Navigation Arrows - Desktop Only (lg and above) */}
+          <div className="hidden lg:flex absolute -top-12 md:-top-16 lg:-top-20 right-0 gap-2 md:gap-3 z-30">
+            <button
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+              className={`w-10 h-10 md:w-12 md:h-12 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
+                currentIndex === 0
+                  ? "bg-gray-50 border-gray-200 cursor-not-allowed"
+                  : "bg-gray-50 border-gray-300 hover:bg-white"
+              }`}
+            >
+              <LeftArrowIcon
+                className={`w-4 h-4 md:w-5 md:h-5 ${currentIndex === 0 ? "text-gray-300" : "text-gray-700"}`}
+              />
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={currentIndex === maxIndex}
+              className={`w-10 h-10 md:w-12 md:h-12 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
+                currentIndex === maxIndex
+                  ? "bg-gray-50 border-gray-200 cursor-not-allowed"
+                  : "bg-gray-50 border-gray-300 hover:bg-white"
+              }`}
+            >
+              <RightArrowIcon
+                className={`w-4 h-4 md:w-5 md:h-5 ${currentIndex === maxIndex ? "text-gray-300" : "text-gray-700"}`}
+              />
+            </button>
+          </div>
+
+          {/* Desktop View - Sliding carousel with arrows */}
+          <div className="hidden lg:block overflow-hidden mt-4 md:mt-6 lg:mt-8">
             <div
-              key={index}
-              onClick={() => handleCardClick(topic.link)}
-              className="rounded-2xl relative overflow-visible backdrop-blur-md cursor-pointer transition-all duration-300 p-4 md:p-5 lg:p-6"
+              className="flex gap-6 transition-transform duration-700 ease-out"
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.95)",
-                borderColor: "rgba(140, 140, 170, 0.4)",
-                boxShadow:
-                  "0 2px 4px 0 rgba(124, 58, 237, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-                border: "1px solid rgba(140, 140, 170, 0.4)",
+                transform: `translateX(-${currentIndex * (100 / itemsPerPage + 2)}%)`,
               }}
             >
-              {/* Image */}
-              <div className="w-full aspect-video rounded-xl md:rounded-2xl mb-4 md:mb-5 overflow-hidden bg-gray-200">
-                <img
-                  src={topic.image}
-                  alt={topic.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Title */}
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
-                {topic.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-xs md:text-sm text-gray-600 mb-4 md:mb-5 line-clamp-4 leading-relaxed">
-                {topic.description}
-              </p>
-
-              {/* Footer */}
-              <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-gray-600">
-                  <svg
-                    className="w-4 h-4 md:w-5 md:h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              {topics.map((topic, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0"
+                  style={{ width: `calc(${100 / itemsPerPage}% - ${(itemsPerPage - 1) * 24 / itemsPerPage}px)` }}
+                >
+                  <div
+                    onClick={() => handleCardClick(topic.link)}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    className="bg-white overflow-hidden cursor-pointer h-full flex flex-col"
+                    style={{
+                      borderRadius: "12px",
+                      border:
+                        hoveredCard === index
+                          ? "1px solid rgba(90, 90, 190, 0.5)"
+                          : "1px solid rgba(75, 75, 174, 0.3)",
+                      boxShadow: "0 3px 3px -1.5px rgba(18, 43, 165, 0.05)",
+                      transition: "border 0.3s ease",
+                    }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
-                  <span className="font-medium">{topic.views}</span>
+                    {/* Image */}
+                    <div className="w-full p-4 sm:p-5 md:p-6">
+                      <div className="w-full h-40 sm:h-44 md:h-48 lg:h-52 bg-gray-100 overflow-hidden rounded-lg">
+                        <img
+                          src={topic.image}
+                          alt={topic.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 flex flex-col flex-grow">
+                      {/* Title */}
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
+                        {topic.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-gray-600 mb-3 md:mb-4 line-clamp-3 leading-relaxed flex-grow">
+                        {topic.description}
+                      </p>
+
+                      {/* Footer */}
+                      <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-gray-200">
+                        <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-gray-600">
+                          <svg
+                            className="w-4 h-4 md:w-5 md:h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                            />
+                          </svg>
+                          <span className="font-medium">{topic.views}</span>
+                        </div>
+                        <button className="bg-gray-800 hover:bg-gray-900 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-colors duration-300">
+                          Explore
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button className="bg-gray-800 hover:bg-gray-900 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-colors duration-300">
-                  Explore
-                </button>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Mobile/Tablet View - Horizontal Scroll */}
+          <div 
+            ref={carouselRef}
+            className="lg:hidden overflow-x-auto scrollbar-hide mt-4 md:mt-6"
+            style={{
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
+            <div className="flex gap-4 md:gap-6 px-1">
+              {topics.map((topic, index) => (
+                <div 
+                  key={index} 
+                  className="flex-shrink-0 w-[85vw] sm:w-[80vw] md:w-[45vw]"
+                  style={{ scrollSnapAlign: 'center' }}
+                >
+                  <div
+                    onClick={() => handleCardClick(topic.link)}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    className="bg-white overflow-hidden cursor-pointer h-full flex flex-col"
+                    style={{
+                      borderRadius: "12px",
+                      border:
+                        hoveredCard === index
+                          ? "1px solid rgba(90, 90, 190, 0.5)"
+                          : "1px solid rgba(75, 75, 174, 0.3)",
+                      boxShadow: "0 3px 3px -1.5px rgba(18, 43, 165, 0.05)",
+                      transition: "border 0.3s ease",
+                    }}
+                  >
+                    {/* Image */}
+                    <div className="w-full p-4 sm:p-5 md:p-6">
+                      <div className="w-full h-40 sm:h-44 md:h-48 bg-gray-100 overflow-hidden rounded-lg">
+                        <img
+                          src={topic.image}
+                          alt={topic.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 flex flex-col flex-grow">
+                      {/* Title */}
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
+                        {topic.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-gray-600 mb-3 md:mb-4 line-clamp-3 leading-relaxed flex-grow">
+                        {topic.description}
+                      </p>
+
+                      {/* Footer */}
+                      <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-gray-200">
+                        <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-gray-600">
+                          <svg
+                            className="w-4 h-4 md:w-5 md:h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                            />
+                          </svg>
+                          <span className="font-medium">{topic.views}</span>
+                        </div>
+                        <button className="bg-gray-800 hover:bg-gray-900 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-colors duration-300">
+                          Explore
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Explore More Button */}
-        <div className="text-center relative z-20 pb-8">
+        <div className="text-center relative z-20 pb-8 mt-8 md:mt-10 lg:mt-12">
           <button
             onClick={handleExploreMore}
-            className="px-8 py-3 md:px-10 md:py-4 text-base md:text-lg font-black text-white rounded-lg shadow-lg relative overflow-hidden border gradient-wave transition-all duration-300"
+            className="px-6 py-2.5 sm:px-8 sm:py-3 md:px-10 md:py-4 text-sm sm:text-base md:text-lg font-black text-white rounded-lg shadow-lg relative overflow-hidden border gradient-wave transition-all duration-300"
             style={{
               backgroundImage:
                 "linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6)",
@@ -186,14 +399,14 @@ const ExploreTopics = () => {
       </div>
 
       {/* CLOUD TRANSITION SECTION */}
-      <div className="w-full relative h-32 md:h-40 lg:h-48 overflow-hidden">
+      <div className="w-full relative h-24 sm:h-32 md:h-40 lg:h-48 overflow-hidden">
         {/* Cloud Images */}
         <div className="absolute inset-0 w-full h-full">
           {/* Cloud 1 - Left */}
           <img
             src={cloudImage2.src}
             alt="1"
-            className="absolute top-0 left-12 w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
+            className="absolute top-0 left-4 sm:left-8 md:left-12 w-48 sm:w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
             style={{ transform: "translateY(-20%)" }}
           />
 
@@ -201,14 +414,14 @@ const ExploreTopics = () => {
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-72 md:w-96 lg:w-[28rem] h-auto opacity-60 mix-blend-multiply"
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-56 sm:w-72 md:w-96 lg:w-[28rem] h-auto opacity-60 mix-blend-multiply"
           />
 
           {/* Cloud 3 - Right */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-0 right-12 w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
+            className="absolute top-0 right-4 sm:right-8 md:right-12 w-48 sm:w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
             style={{ transform: "translateY(-10%)" }}
           />
 
@@ -216,7 +429,7 @@ const ExploreTopics = () => {
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-0 left-1/4 w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
+            className="absolute bottom-0 left-1/4 w-40 sm:w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
             style={{ transform: "translateY(10%)" }}
           />
 
@@ -224,7 +437,7 @@ const ExploreTopics = () => {
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-0 right-1/4 w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
+            className="absolute bottom-0 right-1/4 w-40 sm:w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
             style={{ transform: "translateY(15%)" }}
           />
 
@@ -232,14 +445,14 @@ const ExploreTopics = () => {
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1/3 left-0 w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
+            className="absolute top-1/3 left-0 w-24 sm:w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
             style={{ transform: "translateX(-20%)" }}
           />
 
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-1/4 left-2 w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
+            className="absolute bottom-1/4 left-1 sm:left-2 w-20 sm:w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
             style={{ transform: "translateY(5%)" }}
           />
 
@@ -247,14 +460,14 @@ const ExploreTopics = () => {
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1/3 right-0 w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
+            className="absolute top-1/3 right-0 w-24 sm:w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
             style={{ transform: "translateX(20%)" }}
           />
 
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-1/4 right-2 w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
+            className="absolute bottom-1/4 right-1 sm:right-2 w-20 sm:w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
             style={{ transform: "translateY(5%)" }}
           />
 
@@ -262,51 +475,61 @@ const ExploreTopics = () => {
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-2 left-1/4 -translate-x-1/2 w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
+            className="absolute top-1 sm:top-2 left-1/4 -translate-x-1/2 w-28 sm:w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
             style={{ transform: "translateY(-30%)" }}
           />
 
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-2 right-1/4 translate-x-1/2 w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
+            className="absolute top-1 sm:top-2 right-1/4 translate-x-1/2 w-28 sm:w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
             style={{ transform: "translateY(-30%)" }}
           />
         </div>
 
         {/* Gradient Overlays for Smooth Blending */}
         {/* Top gradient */}
-        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white to-transparent z-10"></div>
+        <div className="absolute top-0 left-0 right-0 h-12 md:h-16 bg-gradient-to-b from-white to-transparent z-10"></div>
 
         {/* Bottom gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-10"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-12 md:h-16 bg-gradient-to-t from-white to-transparent z-10"></div>
 
         {/* Left gradient */}
-        <div className="absolute top-0 bottom-0 left-0 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-24 md:w-32 lg:w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
 
         {/* Right gradient */}
-        <div className="absolute top-0 bottom-0 right-0 w-24 md:w-32 lg:w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-24 md:w-32 lg:w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
       </div>
 
       {/* BOTTOM SECTION */}
       <div className="w-full bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 md:py-16 lg:py-20">
-          <p className="handwritten-cursive text-blue-600 text-base md:text-lg lg:text-xl mb-3 md:mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-12 md:py-16 lg:py-20">
+          <p className="blue-river-font text-blue-600 text-sm sm:text-base md:text-lg lg:text-xl mb-2 sm:mb-3 md:mb-4">
             Step into a smarter way to learn
           </p>
-          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 leading-tight px-4">
             Build Real{" "}
             <span className="inline-block text-blue-600 rounded-full border-2 border-black bg-white font-bold shadow-sm px-2 sm:px-3 md:px-4">
               Understanding
             </span>{" "}
             In Every Subject You <span className="text-blue-600">Explore</span>
           </h3>
-          <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 max-w-3xl mx-auto px-4">
             We bring you the clarity and smart tools that transform how you
             learn, helping you grasp concepts deeper and remember them longer.
           </p>
         </div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 };
