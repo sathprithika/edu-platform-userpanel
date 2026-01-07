@@ -1,11 +1,8 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import cloudImage from "../common/images/beautiful-white-cloud.png";
 
-// import cloudImage2 from "../common/images/cloud.jpg";
-
-import cloudImage2 from "../common/images/11506816.png";
+import cloudImage2 from "../common/images/cloud6.jpg";
 
 
 // Arrow SVG Constants
@@ -427,107 +424,647 @@ const ExploreTopics = () => {
         </div>
       </div>
 
-      {/* CLOUD TRANSITION SECTION */}
-      <div className="w-full relative h-24 sm:h-32 md:h-40 lg:h-48 overflow-hidden">
-        {/* Cloud Images */}
+      {/* ULTRA ENHANCED CLOUD TRANSITION SECTION - MAXIMUM DENSITY ON EDGES */}
+      <div className="w-full relative h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 overflow-hidden">
+        {/* Cloud Images - Multi-layered with ULTRA HEAVY left and right emphasis */}
         <div className="absolute inset-0 w-full h-full">
-          {/* Cloud 1 - Left */}
+          {/* ========== BACKGROUND LAYER (Very Faint) ========== */}
           <img
             src={cloudImage2.src}
-            alt="1"
-            className="absolute top-0 left-4 sm:left-8 md:left-12 w-48 sm:w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
+            alt=""
+            className="absolute top-1/4 left-1/3 w-32 sm:w-48 md:w-64 lg:w-80 xl:w-96 h-auto opacity-20 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/3 right-1/3 w-28 sm:w-40 md:w-56 lg:w-72 xl:w-80 h-auto opacity-20 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-36 sm:w-52 md:w-72 lg:w-88 xl:w-96 h-auto opacity-15 mix-blend-multiply"
+          />
+
+          {/* ========== MIDDLE LAYER (Medium Opacity) ========== */}
+          {/* Main Central Clouds */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-48 sm:w-64 md:w-88 lg:w-[28rem] xl:w-[32rem] h-auto opacity-50 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-0 left-4 sm:left-8 md:left-16 lg:left-20 w-40 sm:w-56 md:w-72 lg:w-88 xl:w-96 h-auto opacity-55 mix-blend-multiply"
             style={{ transform: "translateY(-20%)" }}
           />
-
-          {/* Cloud 2 - Center */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 w-56 sm:w-72 md:w-96 lg:w-[28rem] h-auto opacity-60 mix-blend-multiply"
+            className="absolute top-0 right-4 sm:right-8 md:right-16 lg:right-20 w-40 sm:w-56 md:w-72 lg:w-88 xl:w-96 h-auto opacity-55 mix-blend-multiply"
+            style={{ transform: "translateY(-15%)" }}
           />
 
-          {/* Cloud 3 - Right */}
+          {/* Mid-Level Fill Clouds */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-0 right-4 sm:right-8 md:right-12 w-48 sm:w-64 md:w-80 lg:w-96 h-auto opacity-70 mix-blend-multiply"
-            style={{ transform: "translateY(-10%)" }}
+            className="absolute top-1/3 left-1/4 w-32 sm:w-44 md:w-60 lg:w-72 xl:w-80 h-auto opacity-40 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/3 right-1/4 w-32 sm:w-44 md:w-60 lg:w-72 xl:w-80 h-auto opacity-40 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-1/3 left-1/5 w-28 sm:w-40 md:w-56 lg:w-68 xl:w-76 h-auto opacity-45 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-1/3 right-1/5 w-28 sm:w-40 md:w-56 lg:w-68 xl:w-76 h-auto opacity-45 mix-blend-multiply"
           />
 
-          {/* Cloud 4 - Bottom Left */}
+          {/* ========== FOREGROUND LAYER (Higher Opacity) ========== */}
+          {/* Bottom Clouds */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-0 left-1/4 w-40 sm:w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
+            className="absolute bottom-0 left-1/4 w-36 sm:w-52 md:w-68 lg:w-80 xl:w-88 h-auto opacity-60 mix-blend-multiply"
             style={{ transform: "translateY(10%)" }}
           />
-
-          {/* Cloud 5 - Bottom Right */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-0 right-1/4 w-40 sm:w-56 md:w-72 lg:w-80 h-auto opacity-50 mix-blend-multiply"
+            className="absolute bottom-0 right-1/4 w-36 sm:w-52 md:w-68 lg:w-80 xl:w-88 h-auto opacity-60 mix-blend-multiply"
             style={{ transform: "translateY(15%)" }}
           />
-
-          {/* NEW SMALL CLOUDS - Left Edge */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1/3 left-0 w-24 sm:w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
-            style={{ transform: "translateX(-20%)" }}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 sm:w-48 md:w-64 lg:w-76 xl:w-84 h-auto opacity-50 mix-blend-multiply"
+            style={{ transform: "translateY(20%)" }}
           />
 
+          {/* ========== ULTRA DENSE LEFT SIDE CLOUDS ========== */}
+          {/* Far Left Edge - Primary Layer - Every 7% */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-1/4 left-1 sm:left-2 w-20 sm:w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
-            style={{ transform: "translateY(5%)" }}
+            className="absolute top-0 left-0 w-24 sm:w-36 md:w-48 lg:w-60 xl:w-72 h-auto opacity-45 mix-blend-multiply"
+            style={{ transform: "translateX(-30%) translateY(-10%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[7%] left-0 w-28 sm:w-40 md:w-52 lg:w-64 xl:w-76 h-auto opacity-50 mix-blend-multiply"
+            style={{ transform: "translateX(-25%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[14%] left-0 w-22 sm:w-32 md:w-44 lg:w-56 xl:w-68 h-auto opacity-40 mix-blend-multiply"
+            style={{ transform: "translateX(-35%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[21%] left-0 w-26 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-48 mix-blend-multiply"
+            style={{ transform: "translateX(-28%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[28%] left-0 w-20 sm:w-30 md:w-42 lg:w-54 xl:w-66 h-auto opacity-42 mix-blend-multiply"
+            style={{ transform: "translateX(-32%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[35%] left-0 w-24 sm:w-34 md:w-46 lg:w-58 xl:w-70 h-auto opacity-46 mix-blend-multiply"
+            style={{ transform: "translateX(-26%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[42%] left-0 w-28 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-44 mix-blend-multiply"
+            style={{ transform: "translateX(-30%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[49%] left-0 w-22 sm:w-32 md:w-44 lg:w-56 xl:w-68 h-auto opacity-38 mix-blend-multiply"
+            style={{ transform: "translateX(-33%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[56%] left-0 w-26 sm:w-36 md:w-48 lg:w-60 xl:w-72 h-auto opacity-42 mix-blend-multiply"
+            style={{ transform: "translateX(-27%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[63%] left-0 w-24 sm:w-34 md:w-46 lg:w-58 xl:w-70 h-auto opacity-40 mix-blend-multiply"
+            style={{ transform: "translateX(-29%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[70%] left-0 w-28 sm:w-40 md:w-52 lg:w-64 xl:w-76 h-auto opacity-48 mix-blend-multiply"
+            style={{ transform: "translateX(-25%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[77%] left-0 w-26 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-45 mix-blend-multiply"
+            style={{ transform: "translateX(-32%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[84%] left-0 w-24 sm:w-36 md:w-48 lg:w-60 xl:w-72 h-auto opacity-43 mix-blend-multiply"
+            style={{ transform: "translateX(-28%) translateY(5%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[91%] left-0 w-22 sm:w-34 md:w-46 lg:w-58 xl:w-70 h-auto opacity-47 mix-blend-multiply"
+            style={{ transform: "translateX(-31%) translateY(8%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-0 left-0 w-26 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-45 mix-blend-multiply"
+            style={{ transform: "translateX(-32%) translateY(15%)" }}
           />
 
-          {/* NEW SMALL CLOUDS - Right Edge */}
+          {/* Far Left Edge - TINY FILLER CLOUDS - Every 3-4% */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1/3 right-0 w-24 sm:w-32 md:w-40 lg:w-48 h-auto opacity-40 mix-blend-multiply"
-            style={{ transform: "translateX(20%)" }}
+            className="absolute top-[3%] left-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-25 mix-blend-multiply"
+            style={{ transform: "translateX(-38%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[10%] left-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-28 mix-blend-multiply"
+            style={{ transform: "translateX(-36%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[17%] left-0 w-15 sm:w-21 md:w-29 lg:w-37 xl:w-45 h-auto opacity-26 mix-blend-multiply"
+            style={{ transform: "translateX(-40%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[24%] left-0 w-17 sm:w-23 md:w-31 lg:w-39 xl:w-47 h-auto opacity-29 mix-blend-multiply"
+            style={{ transform: "translateX(-37%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[31%] left-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-27 mix-blend-multiply"
+            style={{ transform: "translateX(-39%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[38%] left-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-24 mix-blend-multiply"
+            style={{ transform: "translateX(-41%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[45%] left-0 w-15 sm:w-21 md:w-29 lg:w-37 xl:w-45 h-auto opacity-26 mix-blend-multiply"
+            style={{ transform: "translateX(-38%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[52%] left-0 w-17 sm:w-23 md:w-31 lg:w-39 xl:w-47 h-auto opacity-28 mix-blend-multiply"
+            style={{ transform: "translateX(-36%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[59%] left-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-25 mix-blend-multiply"
+            style={{ transform: "translateX(-40%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[66%] left-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-27 mix-blend-multiply"
+            style={{ transform: "translateX(-37%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[73%] left-0 w-15 sm:w-21 md:w-29 lg:w-37 xl:w-45 h-auto opacity-29 mix-blend-multiply"
+            style={{ transform: "translateX(-39%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[80%] left-0 w-17 sm:w-23 md:w-31 lg:w-39 xl:w-47 h-auto opacity-26 mix-blend-multiply"
+            style={{ transform: "translateX(-36%) translateY(3%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[87%] left-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-28 mix-blend-multiply"
+            style={{ transform: "translateX(-38%) translateY(6%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[94%] left-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-24 mix-blend-multiply"
+            style={{ transform: "translateX(-40%) translateY(10%)" }}
           />
 
+          {/* Near Left Side - Inner Layer */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute bottom-1/4 right-1 sm:right-2 w-20 sm:w-28 md:w-36 lg:w-44 h-auto opacity-35 mix-blend-multiply"
-            style={{ transform: "translateY(5%)" }}
+            className="absolute top-[5%] left-[2%] w-18 sm:w-26 md:w-36 lg:w-46 xl:w-56 h-auto opacity-35 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[18%] left-[3%] w-20 sm:w-30 md:w-40 lg:w-50 xl:w-60 h-auto opacity-38 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[32%] left-[2.5%] w-22 sm:w-32 md:w-42 lg:w-52 xl:w-62 h-auto opacity-36 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[45%] left-[3.5%] w-19 sm:w-28 md:w-38 lg:w-48 xl:w-58 h-auto opacity-40 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[58%] left-[2%] w-21 sm:w-31 md:w-41 lg:w-51 xl:w-61 h-auto opacity-37 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[72%] left-[3%] w-23 sm:w-33 md:w-43 lg:w-53 xl:w-63 h-auto opacity-39 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-[5%] left-[2.5%] w-20 sm:w-30 md:w-40 lg:w-50 xl:w-60 h-auto opacity-41 mix-blend-multiply"
           />
 
-          {/* ADDITIONAL FILLER CLOUDS - Top Edges */}
+          {/* Additional Left Side Fill Clouds */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1 sm:top-2 left-1/4 -translate-x-1/2 w-28 sm:w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
-            style={{ transform: "translateY(-30%)" }}
+            className="absolute top-[10%] left-[6%] w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 h-auto opacity-28 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[25%] left-[7%] w-18 sm:w-26 md:w-34 lg:w-42 xl:w-50 h-auto opacity-30 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[40%] left-[5.5%] w-17 sm:w-25 md:w-33 lg:w-41 xl:w-49 h-auto opacity-32 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[55%] left-[6.5%] w-19 sm:w-27 md:w-35 lg:w-43 xl:w-51 h-auto opacity-29 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[68%] left-[7.5%] w-18 sm:w-26 md:w-34 lg:w-42 xl:w-50 h-auto opacity-31 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-[8%] left-[6%] w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 h-auto opacity-33 mix-blend-multiply"
           />
 
+          {/* ========== ULTRA DENSE RIGHT SIDE CLOUDS ========== */}
+          {/* Far Right Edge - Primary Layer - Every 7% */}
           <img
             src={cloudImage2.src}
             alt=""
-            className="absolute top-1 sm:top-2 right-1/4 translate-x-1/2 w-28 sm:w-36 md:w-48 lg:w-56 h-auto opacity-30 mix-blend-multiply"
-            style={{ transform: "translateY(-30%)" }}
+            className="absolute top-0 right-0 w-24 sm:w-36 md:w-48 lg:w-60 xl:w-72 h-auto opacity-45 mix-blend-multiply"
+            style={{ transform: "translateX(30%) translateY(-10%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[7%] right-0 w-28 sm:w-40 md:w-52 lg:w-64 xl:w-76 h-auto opacity-50 mix-blend-multiply"
+            style={{ transform: "translateX(25%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[14%] right-0 w-22 sm:w-32 md:w-44 lg:w-56 xl:w-68 h-auto opacity-40 mix-blend-multiply"
+            style={{ transform: "translateX(35%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[21%] right-0 w-26 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-48 mix-blend-multiply"
+            style={{ transform: "translateX(28%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[28%] right-0 w-20 sm:w-30 md:w-42 lg:w-54 xl:w-66 h-auto opacity-42 mix-blend-multiply"
+            style={{ transform: "translateX(32%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[35%] right-0 w-24 sm:w-34 md:w-46 lg:w-58 xl:w-70 h-auto opacity-46 mix-blend-multiply"
+            style={{ transform: "translateX(26%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[42%] right-0 w-28 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-44 mix-blend-multiply"
+            style={{ transform: "translateX(30%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[49%] right-0 w-22 sm:w-32 md:w-44 lg:w-56 xl:w-68 h-auto opacity-38 mix-blend-multiply"
+            style={{ transform: "translateX(33%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[56%] right-0 w-26 sm:w-36 md:w-48 lg:w-60 xl:w-72 h-auto opacity-42 mix-blend-multiply"
+            style={{ transform: "translateX(27%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[63%] right-0 w-24 sm:w-34 md:w-46 lg:w-58 xl:w-70 h-auto opacity-40 mix-blend-multiply"
+            style={{ transform: "translateX(29%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[70%] right-0 w-28 sm:w-40 md:w-52 lg:w-64 xl:w-76 h-auto opacity-48 mix-blend-multiply"
+            style={{ transform: "translateX(25%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[77%] right-0 w-26 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-45 mix-blend-multiply"
+            style={{ transform: "translateX(32%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[84%] right-0 w-24 sm:w-36 md:w-48 lg:w-60 xl:w-72 h-auto opacity-43 mix-blend-multiply"
+            style={{ transform: "translateX(28%) translateY(5%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[91%] right-0 w-22 sm:w-34 md:w-46 lg:w-58 xl:w-70 h-auto opacity-47 mix-blend-multiply"
+            style={{ transform: "translateX(31%) translateY(8%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-0 right-0 w-26 sm:w-38 md:w-50 lg:w-62 xl:w-74 h-auto opacity-45 mix-blend-multiply"
+            style={{ transform: "translateX(32%) translateY(15%)" }}
+          />
+
+          {/* Far Right Edge - TINY FILLER CLOUDS - Every 3-4% */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[3%] right-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-25 mix-blend-multiply"
+            style={{ transform: "translateX(38%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[10%] right-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-28 mix-blend-multiply"
+            style={{ transform: "translateX(36%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[17%] right-0 w-15 sm:w-21 md:w-29 lg:w-37 xl:w-45 h-auto opacity-26 mix-blend-multiply"
+            style={{ transform: "translateX(40%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[24%] right-0 w-17 sm:w-23 md:w-31 lg:w-39 xl:w-47 h-auto opacity-29 mix-blend-multiply"
+            style={{ transform: "translateX(37%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[31%] right-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-27 mix-blend-multiply"
+            style={{ transform: "translateX(39%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[38%] right-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-24 mix-blend-multiply"
+            style={{ transform: "translateX(41%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[45%] right-0 w-15 sm:w-21 md:w-29 lg:w-37 xl:w-45 h-auto opacity-26 mix-blend-multiply"
+            style={{ transform: "translateX(38%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[52%] right-0 w-17 sm:w-23 md:w-31 lg:w-39 xl:w-47 h-auto opacity-28 mix-blend-multiply"
+            style={{ transform: "translateX(36%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[59%] right-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-25 mix-blend-multiply"
+            style={{ transform: "translateX(40%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[66%] right-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-27 mix-blend-multiply"
+            style={{ transform: "translateX(37%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[73%] right-0 w-15 sm:w-21 md:w-29 lg:w-37 xl:w-45 h-auto opacity-29 mix-blend-multiply"
+            style={{ transform: "translateX(39%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[80%] right-0 w-17 sm:w-23 md:w-31 lg:w-39 xl:w-47 h-auto opacity-26 mix-blend-multiply"
+            style={{ transform: "translateX(36%) translateY(3%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[87%] right-0 w-14 sm:w-20 md:w-28 lg:w-36 xl:w-44 h-auto opacity-28 mix-blend-multiply"
+            style={{ transform: "translateX(38%) translateY(6%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[94%] right-0 w-16 sm:w-22 md:w-30 lg:w-38 xl:w-46 h-auto opacity-24 mix-blend-multiply"
+            style={{ transform: "translateX(40%) translateY(10%)" }}
+          />
+
+          {/* Near Right Side - Inner Layer */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[5%] right-[2%] w-18 sm:w-26 md:w-36 lg:w-46 xl:w-56 h-auto opacity-35 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[18%] right-[3%] w-20 sm:w-30 md:w-40 lg:w-50 xl:w-60 h-auto opacity-38 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[32%] right-[2.5%] w-22 sm:w-32 md:w-42 lg:w-52 xl:w-62 h-auto opacity-36 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[45%] right-[3.5%] w-19 sm:w-28 md:w-38 lg:w-48 xl:w-58 h-auto opacity-40 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[58%] right-[2%] w-21 sm:w-31 md:w-41 lg:w-51 xl:w-61 h-auto opacity-37 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[72%] right-[3%] w-23 sm:w-33 md:w-43 lg:w-53 xl:w-63 h-auto opacity-39 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-[5%] right-[2.5%] w-20 sm:w-30 md:w-40 lg:w-50 xl:w-60 h-auto opacity-41 mix-blend-multiply"
+          />
+
+          {/* Additional Right Side Fill Clouds */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[10%] right-[6%] w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 h-auto opacity-28 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[25%] right-[7%] w-18 sm:w-26 md:w-34 lg:w-42 xl:w-50 h-auto opacity-30 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[40%] right-[5.5%] w-17 sm:w-25 md:w-33 lg:w-41 xl:w-49 h-auto opacity-32 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[55%] right-[6.5%] w-19 sm:w-27 md:w-35 lg:w-43 xl:w-51 h-auto opacity-29 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-[68%] right-[7.5%] w-18 sm:w-26 md:w-34 lg:w-42 xl:w-50 h-auto opacity-31 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-[8%] right-[6%] w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 h-auto opacity-33 mix-blend-multiply"
+          />
+
+          {/* ========== TOP FILL CLOUDS ========== */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-0 left-1/4 -translate-x-1/2 w-24 sm:w-32 md:w-44 lg:w-52 xl:w-60 h-auto opacity-25 mix-blend-multiply"
+            style={{ transform: "translateY(-35%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-0 right-1/4 translate-x-1/2 w-24 sm:w-32 md:w-44 lg:w-52 xl:w-60 h-auto opacity-25 mix-blend-multiply"
+            style={{ transform: "translateY(-35%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-0 left-1/3 w-20 sm:w-28 md:w-40 lg:w-48 xl:w-56 h-auto opacity-30 mix-blend-multiply"
+            style={{ transform: "translateY(-40%)" }}
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-0 right-1/3 w-20 sm:w-28 md:w-40 lg:w-48 xl:w-56 h-auto opacity-30 mix-blend-multiply"
+            style={{ transform: "translateY(-40%)" }}
+          />
+
+          {/* ========== SCATTERED DETAIL CLOUDS ========== */}
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-1/5 left-2/5 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 h-auto opacity-25 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute top-2/5 right-2/5 w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 h-auto opacity-25 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-1/5 left-3/5 w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 h-auto opacity-30 mix-blend-multiply"
+          />
+          <img
+            src={cloudImage2.src}
+            alt=""
+            className="absolute bottom-2/5 right-3/5 w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 h-auto opacity-30 mix-blend-multiply"
           />
         </div>
 
-        {/* Gradient Overlays for Smooth Blending */}
-        {/* Top gradient */}
-        <div className="absolute top-0 left-0 right-0 h-12 md:h-16 bg-gradient-to-b from-white to-transparent z-10"></div>
+        {/* Enhanced Gradient Overlays for Smooth Blending */}
+        {/* Top gradient - stronger */}
+        <div className="absolute top-0 left-0 right-0 h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 bg-gradient-to-b from-white via-white/80 to-transparent z-10"></div>
 
-        {/* Bottom gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-12 md:h-16 bg-gradient-to-t from-white to-transparent z-10"></div>
+        {/* Bottom gradient - stronger */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-10"></div>
 
-        {/* Left gradient */}
-        <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-24 md:w-32 lg:w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
+        {/* Left gradient - ULTRA STRONG for ultra-dense clouds */}
+        <div className="absolute top-0 bottom-0 left-0 w-28 sm:w-36 md:w-44 lg:w-52 xl:w-60 bg-gradient-to-r from-white via-white/50 to-transparent z-10"></div>
 
-        {/* Right gradient */}
-        <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-24 md:w-32 lg:w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
+        {/* Right gradient - ULTRA STRONG for ultra-dense clouds */}
+        <div className="absolute top-0 bottom-0 right-0 w-28 sm:w-36 md:w-44 lg:w-52 xl:w-60 bg-gradient-to-r from-transparent via-white/50 to-white z-10"></div>
       </div>
 
       {/* BOTTOM SECTION */}
